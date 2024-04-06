@@ -42,27 +42,70 @@ class Dataset:
     
 
 if __name__ == "__main__":
-
-    dataset = Dataset()
-
     import re
-    def processRow(row):
+    def processRow(row, sentiment_d, count_d):
         created_at_match = re.search(r'"created_at":"(.*?)"', row)
         sentiment_match = re.search(r'"sentiment":([-\d.]+)', row)
-        sentiment = 0        
+        sentiment = 0
         if created_at_match:
             created_at = created_at_match.group(1)
             # 如果找到 sentiment，则更新 sentiment 变量
             if sentiment_match:
                 sentiment = float(sentiment_match.group(1))
-            
-            print("Created At:", created_at)
-            print("Sentiment:", sentiment)
+
+            update_dict(sentiment_d, sentiment, count_d, created_at)
+
+            #print("Created At:", created_at[5:7]+created_at[8:10], created_at[11:13])
+            #print("Sentiment:", sentiment)
         else:
             print("The required field 'created_at' is missing.")
 
-    for row in islice(dataset.reader, 16):
-        print(row)
-        processRow(row)
-        print()
+    # put value into dict
+    def update_dict(s_d, sentiment, c_d, created_at):
+        mmdd = created_at[5:7]+created_at[8:10]
+        hh = created_at[11:13]
+
+        # sentiment_dict: value = sum_sentiment
+        # count_dict: value = count
+        # date in dict
+        if mmdd in s_d.keys():
+            #if hour in dict
+            if hh in s_d[mmdd].keys():
+                s_d[mmdd][hh] += sentiment
+                c_d[mmdd][hh] += 1
+            # if hour not in dict
+            else:
+                s_d[mmdd][hh] = sentiment
+                c_d[mmdd][hh] = 1
+        # date not in dict
+        else:
+            s_d[mmdd] = {}
+            s_d[mmdd][hh] = sentiment
+            c_d[mmdd] = {}
+            c_d[mmdd][hh] = 1
+
+
+
+
+
+
+
+    dataset = Dataset()
+
+    # create dict for sum_sentiment sentiment_d = {[mmdd]:{[hh]: sum_sentiment}}
+    sentiment_d = {}
+    # create dict for twitter_count count_d = {[mmdd]:{[hh]: count}}
+    count_d = {}
+
+    #for row in islice(dataset.reader, 16):
+        #processRow(row, sentiment_d, count_d)
+
+    for row in dataset.reader:
+        processRow(row, sentiment_d, count_d)
+
+    print(count_d)
+
+
+
+
 
