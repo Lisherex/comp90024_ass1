@@ -1,8 +1,8 @@
 import time
 
-import json
-import ijson
-from pyspark import SparkContext
+#import json
+#import ijson
+#from pyspark import SparkContext
 from itertools import islice
 
 filePathes = [
