@@ -1,4 +1,4 @@
-import time
+#import time
 
 #import json
 #import ijson
@@ -84,6 +84,29 @@ if __name__ == "__main__":
             c_d[mmdd] = {}
             c_d[mmdd][hh] = 1
 
+    # get the happiest hour
+    def happiest_hour(s_d):
+        temp_max = 0
+        happy_hour = None
+        for mmdd in s_d.keys():
+            for hh in s_d[mmdd].keys():
+                if s_d[mmdd][hh] > temp_max:
+                    temp_max = s_d[mmdd][hh]
+                    happy_hour = [mmdd, hh]
+        return happy_hour
+
+        # get the happiest day
+    def happiest_day(s_d):
+        temp_max = 0
+        happy_day = None
+        for mmdd in s_d.keys():
+            day_sum = 0
+            for hh in s_d[mmdd].keys():
+                day_sum += s_d[mmdd][hh]
+                if day_sum > temp_max:
+                    temp_max = day_sum
+                    happy_day = mmdd
+        return happy_day
 
 
 
@@ -102,8 +125,9 @@ if __name__ == "__main__":
 
     for row in dataset.reader:
         processRow(row, sentiment_d, count_d)
-
-    print(count_d)
+    happy_hour = happiest_hour(sentiment_d)
+    happy_day = happiest_day(sentiment_d)
+    print(happy_day)
 
 
 
