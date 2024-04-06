@@ -84,7 +84,7 @@ if __name__ == "__main__":
             c_d[mmdd] = {}
             c_d[mmdd][hh] = 1
 
-    # get the happiest hour
+    # get the happiest hour -> [mmdd, hh], double
     def happiest_hour(s_d):
         temp_max = 0
         happy_hour = None
@@ -93,9 +93,9 @@ if __name__ == "__main__":
                 if s_d[mmdd][hh] > temp_max:
                     temp_max = s_d[mmdd][hh]
                     happy_hour = [mmdd, hh]
-        return happy_hour
+        return happy_hour, temp_max
 
-        # get the happiest day
+    # get the happiest day -> mmdd, int
     def happiest_day(s_d):
         temp_max = 0
         happy_day = None
@@ -106,11 +106,31 @@ if __name__ == "__main__":
                 if day_sum > temp_max:
                     temp_max = day_sum
                     happy_day = mmdd
-        return happy_day
+        return happy_day, temp_max
 
+    # most active hour -> [mmdd, hh], double
+    def active_hour(c_d):
+        temp_max = 0
+        active_hour = None
+        for mmdd in c_d.keys():
+            for hh in c_d[mmdd].keys():
+                if c_d[mmdd][hh] > temp_max:
+                    temp_max = c_d[mmdd][hh]
+                    active_hour = [mmdd, hh]
+        return active_hour, temp_max
 
-
-
+    # get the active day -> mmdd, int
+    def active_day(c_d):
+        temp_max = 0
+        active_day = None
+        for mmdd in c_d.keys():
+            day_sum = 0
+            for hh in c_d[mmdd].keys():
+                day_sum += c_d[mmdd][hh]
+                if day_sum > temp_max:
+                    temp_max = day_sum
+                    active_day = mmdd
+        return active_day, temp_max
 
 
     dataset = Dataset()
@@ -125,9 +145,11 @@ if __name__ == "__main__":
 
     for row in dataset.reader:
         processRow(row, sentiment_d, count_d)
-    happy_hour = happiest_hour(sentiment_d)
-    happy_day = happiest_day(sentiment_d)
-    print(happy_day)
+    happy_hour, max_hour = happiest_hour(sentiment_d)
+    happy_day, max_day = happiest_day(sentiment_d)
+    active_hour, hour_count = active_hour(count_d)
+    active_day, day_count = active_day(count_d)
+    print(happy_hour, max_hour,happy_day, max_day,active_hour, hour_count,active_day, day_count)
 
 
 
