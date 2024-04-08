@@ -3,6 +3,8 @@
 #import json
 #import ijson
 #from pyspark import SparkContext
+from mpi4py import MPI
+import os
 from itertools import islice
 
 filePathes = [
@@ -14,19 +16,32 @@ class Dataset:
     def __init__(self, filePath: str = filePathes[1], skipFirstAndLast: str = True) -> None:
         self.filePath = filePath
         self.reader = self.genFilesReader(skipFirstAndLast)
+        self.rank = rank
+        self.size = size
 
     def genFilesReader(self, skipFirstAndLast:str = True):
+        f_size = os.path.getsize(self.filePath)
+        node_size = f_size//self.size
+        starting = self.rank * node_size
+        bytes_read = 0
+
         with open(self.filePath, encoding='utf-8') as f:
+            f.seek(starting, 0)
             iterator = iter(f)
             if skipFirstAndLast:
                 next(iterator, None)
                 prev_row = next(iterator, None)
                 for current_row in iterator:
-                    yield prev_row
+                    if self.rank == 0 or bytes_read > 0:
+                        yield prev_row
+                    bytes_read += len(current_row)
                     prev_row = current_row
             else:
                 for row in iterator:
-                    yield row
+                    if self.rank == 0 or bytes_read > 0:
+                        yield row
+                    bytes_read += len(row)
+        f.close()
 
 
     @property
@@ -132,8 +147,11 @@ if __name__ == "__main__":
                     active_day = mmdd
         return active_day, temp_max
 
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
 
-    dataset = Dataset()
+    dataset = Dataset(size, rank)
 
     # create dict for sum_sentiment sentiment_d = {[mmdd]:{[hh]: sum_sentiment}}
     sentiment_d = {}
@@ -145,11 +163,14 @@ if __name__ == "__main__":
 
     for row in dataset.reader:
         processRow(row, sentiment_d, count_d)
-    happy_hour, max_hour = happiest_hour(sentiment_d)
-    happy_day, max_day = happiest_day(sentiment_d)
-    active_hour, hour_count = active_hour(count_d)
-    active_day, day_count = active_day(count_d)
-    print(happy_hour, max_hour,happy_day, max_day,active_hour, hour_count,active_day, day_count)
+
+
+    if rank == 0:
+        happy_hour, max_hour = happiest_hour(sentiment_d)
+        happy_day, max_day = happiest_day(sentiment_d)
+        active_hour, hour_count = active_hour(count_d)
+        active_day, day_count = active_day(count_d)
+        print(happy_hour, max_hour,happy_day, max_day,active_hour, hour_count,active_day, day_count)
 
 
 
