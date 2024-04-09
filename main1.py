@@ -2,7 +2,7 @@ from mpi4py import MPI
 import numpy as np
 from utils import *
 
-FILE_PATH = 'twitter-50mb.json'
+FILE_PATH = 'data/twitter-50mb.json'
 
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
@@ -12,7 +12,7 @@ SHAPE = (12, 31, 24)
 sentiment_a = np.zeros(shape=SHAPE, dtype=float)
 count_a = np.zeros(shape=SHAPE, dtype=float)
 
-for line in read_file(FILE_PATH):
+for line in read_file(FILE_PATH, rank, size):
     if get_content(line) is not None:
         create_at, sentiment = get_content(line)
         count_a[create_at[0]-1, create_at[1]-1, create_at[2]-1] += 1
