@@ -52,7 +52,7 @@ def happiest_hour(s_a):
             for hh in range(24):
                 if s_a[mm][dd][hh] > temp_max:
                     temp_max = s_a[mm][dd][hh]
-                    happy_hour = [mm, dd, hh]
+                    happy_hour = [mm+1, dd+1, hh+1]
     return happy_hour, temp_max
 
 def happiest_day(s_a):
@@ -65,7 +65,7 @@ def happiest_day(s_a):
                 day_sum += s_a[mm][dd][hh]
             if day_sum > temp_max:
                 temp_max = day_sum
-                happy_day = [mm, dd]
+                happy_day = [mm+1, dd+1]
     return happy_day, temp_max
 
 def most_active_hour(c_a):
@@ -76,7 +76,7 @@ def most_active_hour(c_a):
             for hh in range(24):
                 if c_a[mm][dd][hh] > temp_max:
                     temp_max = c_a[mm][dd][hh]
-                    active_hour = [mm, dd, hh]
+                    active_hour = [mm+1, dd+1, hh+1]
     return active_hour, temp_max
 
 def most_active_day(c_a):
@@ -89,5 +89,5 @@ def most_active_day(c_a):
                 day_sum += c_a[mm][dd][hh]
             if day_sum > temp_max:
                 temp_max = day_sum
-                active_day = [mm, dd]
+                active_day = [mm+1, dd+1]
     return active_day, temp_max
