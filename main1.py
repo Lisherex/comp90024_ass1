@@ -27,3 +27,8 @@ if rank == 0:
     happy_day, day_sentiment = happiest_day(total_sentiment_a)
     active_hour, hour_count = most_active_hour(total_count_a)
     active_day, day_count = most_active_day(total_count_a)
+
+    print('The Happiest Hour:', happy_hour, 'with sentiment of', hour_sentiment)
+    print('The Happiest Day:', happy_day, 'with sentiment of', day_sentiment)
+    print('The Most Active Hour:', active_hour, 'with tweets of', hour_count)
+    print('The Happiest Hour:', active_day, 'with sentiment of', day_count)
