@@ -1,4 +1,4 @@
-`scp -r "E:\class\04_s1\Cluster and Cloud Computing\assignment1\master\test_100G_oneBatch" yufeil10@spartan.hpc.unimelb.edu.au:/home/yufeil10/cccAs1/result`
+`scp -r "E:\class\04_s1\Cluster and Cloud Computing\assignment1\master\test_100G_oneBatch" yufeil10@spartan.hpc.unimelb.edu.au:/home/yufeil10/cccAs1/src`
 
 `sbatch ./cccAs1/src/test_100G_oneBatch/submit.sh`
 `sprio -j 58229354`

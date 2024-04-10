@@ -1,0 +1,62 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"mpi4py/3.0.2-timed-pingpong"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "mpi4py/3.0.2-timed-pingpong"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+Read Data: 1.6689300537109375e-06
+Read Data: 1.9073486328125e-06
+Read Data: 1.6689300537109375e-06
+Read Data: 2.1457672119140625e-06
+Read Data: 4.5299530029296875e-06
+Read Data: 4.5299530029296875e-06
+Read Data: 5.245208740234375e-06
+Read Data: 5.245208740234375e-06
+Data Reduced: 106.91295742988586
+The Happiest Hour: [12, 31, 13] with sentiment of 3658.952143925703
+The Happiest Day: [12, 31] with sentiment of 30402.262571420666
+The Most Active Hour: [5, 21, 12] with tweets of 39061.0
+The Most Active day: [5, 21] with tweets of 424372.0
+Data Analyzed: 106.91337704658508
+
+real	1m49.381s
+user	6m49.639s
+sys	0m20.072s
+Job ID           : 58230818
+Cluster          : spartan
+User/Project     : yufeil10/comp90024
+Nodes            : 2
+Wall-clock time  : 00:01:54 / 00:05:00
+
+Displaying overall resources usage from 2024-04-11 07:46:31 to 2024-04-11 07:48:25:
+
+NODE            CPU#        TOT%   ( USR   / SYS   / WIO   / IDLE  ) 
+
+spartan-bm024 : 
+                CPU# 1    : 91.6   (  86.6 /   5.0 /   0.0 /   8.4 ) 
+                CPU# 2    : 93.2   (  88.3 /   4.9 /   0.0 /   6.8 ) 
+                CPU# 3    : 89.5   (  85.2 /   4.3 /   0.0 /  10.5 ) 
+                CPU# 4    : 89.6   (  85.1 /   4.5 /   0.0 /  10.4 ) 
+
+spartan-bm025 : 
+                CPU# 5    : 89.0   (  84.2 /   4.8 /   0.0 /  11.0 ) 
+                CPU# 6    : 88.9   (  84.4 /   4.5 /   0.0 /  11.1 ) 
+                CPU# 7    : 88.9   (  84.4 /   4.5 /   0.0 /  11.1 ) 
+                CPU# 8    : 88.9   (  84.4 /   4.5 /   0.0 /  11.1 ) 
+
+
+Allocated CPUs            : 8    
+  CPUs with usage <25%    : 0    
+  CPUs with usage <50%    : 0    
+  CPUs with usage >50%    : 8    
+
+Memory used (RAM)         : 1.9%  [639MB of 33555MB]
+
+--------------------------------------------
+
