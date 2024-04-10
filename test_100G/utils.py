@@ -27,7 +27,7 @@ def read_file(FILE_PATH, rank, size):
     f.close()
 
 
-# get created at from line
+# get created_at/sentiment from line
 def get_content(line):
     created_at_match = re.search(r'"created_at":"(.*?)"', line)
     sentiment_match = re.search(r'"sentiment":([-\d.]+)', line)

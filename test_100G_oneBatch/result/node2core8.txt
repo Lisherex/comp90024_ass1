@@ -1,0 +1,52 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"mpi4py/3.0.2-timed-pingpong"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "mpi4py/3.0.2-timed-pingpong"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+The Happiest Hour: [12, 31, 13] with sentiment of 3658.952143925703
+The Happiest Day: [12, 31] with sentiment of 30402.262571420666
+The Most Active Hour: [5, 21, 12] with tweets of 39061.0
+The Most Active day: [5, 21] with tweets of 424372.0
+
+real	1m39.431s
+user	6m10.259s
+sys	0m20.013s
+Job ID           : 58229357
+Cluster          : spartan
+User/Project     : yufeil10/comp90024
+Nodes            : 2
+Wall-clock time  : 00:01:45 / 00:05:00
+
+Displaying overall resources usage from 2024-04-11 06:54:12 to 2024-04-11 06:55:57:
+
+NODE            CPU#        TOT%   ( USR   / SYS   / WIO   / IDLE  ) 
+
+spartan-bm024 : 
+                CPU# 1    : 74.6   (  70.8 /   3.7 /   0.0 /  25.4 ) 
+                CPU# 2    : 74.5   (  70.9 /   3.6 /   0.0 /  25.5 ) 
+                CPU# 3    : 75.4   (  71.6 /   3.9 /   0.0 /  24.6 ) 
+                CPU# 4    : 75.1   (  71.3 /   3.8 /   0.0 /  24.9 ) 
+
+spartan-bm025 : 
+                CPU# 5    : 83.1   (  78.5 /   4.6 /   0.0 /  16.9 ) 
+                CPU# 6    : 83.1   (  78.5 /   4.6 /   0.0 /  16.9 ) 
+                CPU# 7    : 83.0   (  78.7 /   4.3 /   0.0 /  17.0 ) 
+                CPU# 8    : 83.1   (  78.6 /   4.5 /   0.0 /  16.9 ) 
+
+
+Allocated CPUs            : 8    
+  CPUs with usage <25%    : 0    
+  CPUs with usage <50%    : 0    
+  CPUs with usage >50%    : 8    
+
+Memory used (RAM)         : 1.9%  [641MB of 33555MB]
+
+--------------------------------------------
+

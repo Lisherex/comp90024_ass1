@@ -1,0 +1,43 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"mpi4py/3.0.2-timed-pingpong"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "mpi4py/3.0.2-timed-pingpong"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+The Happiest Hour: [12, 31, 13] with sentiment of 3658.952143925703
+The Happiest Day: [12, 31] with sentiment of 30402.262571420666
+The Most Active Hour: [5, 21, 12] with tweets of 39061.0
+The Most Active day: [5, 21] with tweets of 424372.0
+
+real	12m51.778s
+user	12m11.750s
+sys	0m34.572s
+Job ID           : 58229355
+Cluster          : spartan
+User/Project     : yufeil10/comp90024
+Nodes            : 1
+Wall-clock time  : 00:12:56 / 00:25:00
+
+Displaying overall resources usage from 2024-04-11 06:55:57 to 2024-04-11 07:08:53:
+
+NODE            CPU#        TOT%   ( USR   / SYS   / WIO   / IDLE  ) 
+
+spartan-bm001 : 
+                CPU# 1    : 97.7   (  92.7 /   5.0 /   0.0 /   2.3 ) 
+
+
+Allocated CPUs            : 1    
+  CPUs with usage <25%    : 0    
+  CPUs with usage <50%    : 0    
+  CPUs with usage >50%    : 1    
+
+Memory used (RAM)         : 3.9%  [162MB of 4195MB]
+
+--------------------------------------------
+
