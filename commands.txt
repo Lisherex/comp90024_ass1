@@ -1,0 +1,8 @@
+scp "E:\class\04_s1\Cluster and Cloud Computing\assignment1\master\test01\test01.py" yufeil10@spartan.hpc.unimelb.edu.au:/home/yufeil10/cccAs1/src/test01
+
+scp -r "E:\class\04_s1\Cluster and Cloud Computing\assignment1\master\test01" yufeil10@spartan.hpc.unimelb.edu.au:/home/yufeil10/cccAs1/src/
+
+
+
+scp yufeil10@spartan.hpc.unimelb.edu.au:/home/yufeil10/cccAs1/src/test_100G "E:/class/04_s1/Cluster and Cloud Computing/assignment1/master/test_100GB"
+
